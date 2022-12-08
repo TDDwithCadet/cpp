@@ -14,7 +14,7 @@ class Dollar
 		};
 
 		bool equals(Dollar dollar){
-			return _amount == dollar._amount;
+			return _amount == dollar._amount; // equals()
 		};
 
 	// private:

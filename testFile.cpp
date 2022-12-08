@@ -5,10 +5,8 @@
 //test_case_name, test_name
 TEST(TDD, testMultiplication) {
   Dollar five = Dollar(5);
-  Dollar product = five.times(2);
-  EXPECT_EQ(10, product._amount);
-  product = five.times(3);
-  EXPECT_EQ(15, product._amount);
+  EXPECT_EQ(Dollar(10), five.times(2));
+  EXPECT_EQ(Dollar(15), five.times(3));
 }
 
 TEST(TDD, testEquality) {
