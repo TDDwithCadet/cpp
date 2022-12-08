@@ -17,5 +17,5 @@ class Dollar
 			return _amount == dollar._amount; // equals()
 		};
 
-	// private:
+	private:
 };
