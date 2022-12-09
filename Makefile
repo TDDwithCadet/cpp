@@ -1,12 +1,14 @@
 DIR=/usr/local
-
-TEST=testFile
+INC=include
+# SRCS=srcs
+TSRCS=test_srcs/testFile.cpp
+# TEST=testFile
 
 all:
 	c++ -o main main.cpp -std=c++14
 
 test:
-	c++ -o testFile testFile.cpp -isystem -I${DIR}/include -L${DIR}/lib -pthread -lgtest -std=c++14
+	c++ -o testFile $(TSRCS) -isystem -I${DIR}/include -I$(INC) -L${DIR}/lib -pthread -lgtest -std=c++14
 	./testFile
 
 clean:

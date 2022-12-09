@@ -1,8 +1,10 @@
+#ifndef FRANC_HPP
+# define FRANC_HPP
+#include "Money.hpp"
 
-class Franc
+class Franc : public Money
 {
 	public:
-		int _amount;
 
 		Franc(int amount){
 			_amount = amount;
@@ -13,8 +15,10 @@ class Franc
 		};
 
 		bool equals(Franc franc){
-			return _amount == franc._amount; // equals()
+			return _amount == franc.getMoney(); // equals()
 		};
 
 	private:
 };
+
+#endif

@@ -1,8 +1,10 @@
+#ifndef DOLLAR_HPP
+# define DOLLAR_HPP
+#include "Money.hpp"
 
-class Dollar
+class Dollar : public Money
 {
 	public:
-		int _amount;
 
 		Dollar(int amount){
 			_amount = amount;
@@ -14,8 +16,10 @@ class Dollar
 		};
 
 		bool equals(Dollar dollar){
-			return _amount == dollar._amount; // equals()
+			return _amount == dollar.getMoney(); // equals()
 		};
 
 	private:
 };
+
+#endif
