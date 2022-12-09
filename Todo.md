@@ -11,5 +11,6 @@ Equal object
 Dollar/Franc 중복
 // 공용 equals
 공용 times
-// Franc와 Dollar 비교하기(p83)
-통화?(p85)
+// Franc와 Dollar 비교하기(p83 추가)
+// 통화?(p85 추가, p99삭제)
+testFrancMultiplication을 지워야 할 까?(p92 추가)

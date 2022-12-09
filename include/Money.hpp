@@ -4,7 +4,9 @@
 # include <iostream>
 # include <string>
 # include <stdio.h>
-# include "Dollar.hpp"
+// # include "Dollar.hpp"
+// # include "Franc.hpp"
+
 
 class Money
 {
@@ -14,9 +16,10 @@ class Money
 
 		};
 
-		Money(int amount)
+		Money(int amount, std::string currency)
 		{
 			_amount = amount;
+			_currency = currency;
 		};
 
 		int	const &getMoney()
@@ -38,7 +41,12 @@ class Money
 		int times(int multiplier)
 		{
 			return _amount * multiplier;
-		}			
+		};
+		
+		std::string currency(){ 
+			// p95, 이제 두 currency()가 동일하므로 변수 선언과 currency() 구현을 둘 다 위로 올릴(push up)수 있게 됐다.
+			return _currency;
+		};
 
 
 		
@@ -46,15 +54,22 @@ class Money
 	protected:
 		int					_amount;
 		std::string	_class_type;
+		std::string _currency; // 통화
 	
 	private:
 		
 };
 
-// Dollar dollar(int amount) // 이 형식은 되지 않는 것 같다.(p89)
-// {
-// 	return (Dollar(amount));
+// static Money franc(int amount) {
+// 	return Franc(amount, "CHF");
 // }
+
+// static Money dollar(int amount) {
+// 	return Dollar(amount, "USD");
+// }
+
+
+
 
 
 

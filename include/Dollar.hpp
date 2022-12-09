@@ -2,15 +2,15 @@
 # define DOLLAR_HPP
 #include "Money.hpp"
 
-
 class Dollar : public Money
 {
 	public:
 
-		Dollar(int amount)
+		Dollar(int amount, std::string currency)
 		{
 			_amount = amount;
 			_class_type = typeid(this).name();
+			_currency = currency;
 		};
 
 		// Money times(int multiplier){ //dollor, franc >> money로 통일(p88)
