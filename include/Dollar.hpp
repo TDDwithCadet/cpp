@@ -2,12 +2,15 @@
 # define DOLLAR_HPP
 #include "Money.hpp"
 
+
 class Dollar : public Money
 {
 	public:
 
-		Dollar(int amount){
+		Dollar(int amount)
+		{
 			_amount = amount;
+			_class_type = typeid(this).name();
 		};
 
 		Dollar times(int multiplier){
