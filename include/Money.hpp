@@ -32,15 +32,20 @@ class Money
 			return _class_type;
 		};
 
+		std::string const &getCurrency()
+		{
+			return _currency;
+		};
+
 		bool equals(Money money){
 			Money _money = money; 
 			// std::cout << "class_type : " <<_class_type << "\n";
-			return _amount == _money.getMoney() && _class_type == money.getClassType(); // 공용으로 바꿈, 
+			return _amount == _money.getMoney() && _currency == money.getCurrency(); // 공용으로 바꿈, 
 		};
 
-		int times(int multiplier)
+		Money times(int multiplier)
 		{
-			return _amount * multiplier;
+			return Money(_amount * multiplier, _currency);
 		};
 		
 		std::string currency(){ 
@@ -59,6 +64,8 @@ class Money
 	private:
 		
 };
+
+
 
 // static Money franc(int amount) {
 // 	return Franc(amount, "CHF");

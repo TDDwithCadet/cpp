@@ -7,8 +7,8 @@
 //test_case_name, test_name
 TEST(TDD, testMultiplication) {
   Money five = Dollar(5, "USD");
-  EXPECT_EQ(Dollar(10, "USD").getMoney(), Money(five.times(2), "USD").getMoney());
-  EXPECT_EQ(Dollar(15, "USD").getMoney(), Money(five.times(3), "USD").getMoney());
+  EXPECT_EQ(Dollar(10, "USD").getMoney(), five.times(2).getMoney());
+  EXPECT_EQ(Dollar(15, "USD").getMoney(), five.times(3).getMoney());
 }
 
 TEST(TDD, testEquality) {
@@ -22,6 +22,10 @@ TEST(TDD, testEquality) {
 TEST(TDD, testCurrency) { //p94, 통화개념을 표시하기 위하여 currency 도입
   EXPECT_EQ("USD", Dollar(1, "USD").currency());
   EXPECT_EQ("CHF", Franc(1, "CHF").currency());  
+}
+
+TEST(TDD, testDiffentClassEquality) { 
+  EXPECT_EQ(Money(10, "CHF").currency(), Franc(10, "CHF").currency()); 
 }
 
 
