@@ -12,9 +12,9 @@ class Franc : public Money
 			_class_type = typeid(this).name();
 		};
 
-		Franc times(int multiplier){
-			return Franc(_amount * multiplier); // 5CHF X 2 = 10CHF
-		};
+		// Money times(int multiplier){ //dollor, franc >> money로 통일(p88)
+		// 	return Franc(_amount * multiplier); // 5CHF X 2 = 10CHF
+		// };
 
 	private:
 };

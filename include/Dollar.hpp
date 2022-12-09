@@ -13,10 +13,9 @@ class Dollar : public Money
 			_class_type = typeid(this).name();
 		};
 
-		Dollar times(int multiplier){
-			// _amount = _amount * multiplier; // $5 X 2 = $10 
-			return Dollar(_amount * multiplier); // Dollar 부작용?
-		};
+		// Money times(int multiplier){ //dollor, franc >> money로 통일(p88)
+		// 	return Dollar(_amount * multiplier); // Dollar 부작용?
+		// };
 
 	private:
 };
