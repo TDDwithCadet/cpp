@@ -14,11 +14,6 @@ class Franc : public Money
 			return Franc(_amount * multiplier); // 5CHF X 2 = 10CHF
 		};
 
-		bool equals(Franc franc){
-			Money money = (Money) franc; 
-			return _amount == money.getMoney(); // equals()
-		};
-
 	private:
 };
 

@@ -15,11 +15,6 @@ class Dollar : public Money
 			return Dollar(_amount * multiplier); // Dollar 부작용?
 		};
 
-		bool equals(Dollar dollar){
-			Money money = (Money) dollar; 
-			return _amount == money.getMoney(); // equals(), protected 사용을 위하여 getMoney로 바꿈
-		};
-
 	private:
 };
 
