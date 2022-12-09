@@ -16,7 +16,8 @@ class Dollar : public Money
 		};
 
 		bool equals(Dollar dollar){
-			return _amount == dollar.getMoney(); // equals()
+			Money money = (Money) dollar; 
+			return _amount == money.getMoney(); // equals(), protected 사용을 위하여 getMoney로 바꿈
 		};
 
 	private:

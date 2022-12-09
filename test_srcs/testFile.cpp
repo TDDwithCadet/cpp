@@ -20,6 +20,8 @@ TEST(TDD, testMultiplication2) {
 TEST(TDD, testEquality) {
   EXPECT_TRUE(Dollar(5).equals(Dollar(5)));
   EXPECT_FALSE(Dollar(5).equals(Dollar(6)));
+  // EXPECT_TRUE(Franc(5).equals(Franc(5))); //공용 equals
+  // EXPECT_FALSE(Franc(5).equals(Franc(6))); //공용 equals
 }
 
 

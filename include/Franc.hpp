@@ -15,7 +15,8 @@ class Franc : public Money
 		};
 
 		bool equals(Franc franc){
-			return _amount == franc.getMoney(); // equals()
+			Money money = (Money) franc; 
+			return _amount == money.getMoney(); // equals()
 		};
 
 	private:
