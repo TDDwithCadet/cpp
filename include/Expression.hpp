@@ -3,6 +3,7 @@
 #include "Money.hpp"
 
 // class Money;
+
 class Expression : public Money
 {
   public :

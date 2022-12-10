@@ -3,9 +3,9 @@
 #include "Dollar.hpp"
 #include "Franc.hpp"
 #include "Money.hpp"
-#include "Expression.hpp"
-#include "Bank.hpp"
 #include "Sum.hpp"
+// #include "Expression.hpp"
+#include "Bank.hpp"
 
 // test_case_name, test_name
 TEST(TDD, testMultiplication) {
@@ -41,17 +41,18 @@ TEST(TDD, testCurrency) { //p94, 통화개념을 표시하기 위하여 currency
 TEST(TDD, testSimpleAddition){
   Money five = Money(5, "USD");
   Money add = five.plus(five);
-  Expression result = Expression(add.getMoney(), add.getCurrency());
-  Sum sum = Sum(five, five);
+  // Expression result = Expression(add.getMoney(), add.getCurrency());
+  // Sum sum = Sum(five, five);
+  Money money = Money(10, "USD");
   Bank bank = Bank();
-  Money reduced = bank.reduce(sum, "USD");
+  Money reduced = money.reduce(bank, "USD");
   EXPECT_EQ(Money().dollar(10).getMoney(), reduced.getMoney());
 }
 
 TEST(TDD, testPlusReturnSum){
   Money five = Money(5, "USD");
   Money add = five.plus(five);
-  Expression result = Expression(add.getMoney(), add.getCurrency());
+  // Expression result = Expression(add.getMoney(), add.getCurrency());
   Sum sum = Sum(five, add);
   EXPECT_EQ(five.getMoney(), sum._augend.getMoney());
   EXPECT_EQ(add.getMoney(), sum._addend.getMoney());
@@ -60,15 +61,30 @@ TEST(TDD, testPlusReturnSum){
 TEST(TDD, testReduceSum){
   Sum sum = Sum(Money().dollar(3), Money().dollar(4));
   Bank bank = Bank();
-  Money result = bank.reduce(sum, "USD");
+  Money money = sum.reduce(bank, "USD");
+  Money result = money.reduce(bank, "USD");
   EXPECT_EQ(Money().dollar(7).getMoney(), result.getMoney());
 }
 
 TEST(TDD, testReduceMoney){
   Bank bank = Bank();
-  Money result = bank.reduce(Sum(Money(1, "USD"), Money(0, "USD")), "USD");
+  Money money = Money(1, "USD");
+  std::cout << money.getMoney() << "\n";
+  Money result = money.reduce(bank, "USD");
   EXPECT_EQ(Money().dollar(1).getMoney(), result.getMoney());
 }
+
+TEST(TDD, testReduceMoneyDifferentCurrency){
+  Bank bank = Bank();
+  bank.addRate("CHF", "USD", 2);
+  Money money = Sum(Money(2, "CHF"), Money(0, "CHF")).reduce(bank, "CHF");
+  Money result = money.reduce(bank, "USD");
+  EXPECT_EQ(Money().dollar(1).getMoney(), result.getMoney());
+}
+
+// TEST(TDD, testArrayEquals){
+//   EXPECT_EQ()
+// }
 
 
 int main(int argc, char **argv) {

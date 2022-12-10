@@ -1,7 +1,7 @@
 DIR=/usr/local
 INC=include
 # SRCS=srcs
-TSRCS=test_srcs/testFile.cpp
+TSRCS=test_srcs/testFile.cpp srcs/Money.cpp
 # TEST=testFile
 
 all:

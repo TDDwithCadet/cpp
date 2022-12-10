@@ -1,9 +1,9 @@
 #ifndef SUM_HPP
 # define SUM_HPP
 # include "Money.hpp"
-# include "Expression.hpp"
+// # include "Expression.hpp"
   
-  class Sum : public Expression{
+  class Sum : public Money{
     public:
       Money _augend;
       Money _addend;
@@ -23,7 +23,7 @@
         _addend = addend;
       };
 
-      Money reduce(std::string to){
+      Money reduce(Bank bank, std::string to){
         int amount = _augend.getMoney() + _addend.getMoney();
         return Money(amount, to);
       };
