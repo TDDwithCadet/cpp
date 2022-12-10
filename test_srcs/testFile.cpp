@@ -5,6 +5,7 @@
 #include "Money.hpp"
 #include "Expression.hpp"
 #include "Bank.hpp"
+#include "Sum.hpp"
 
 // test_case_name, test_name
 TEST(TDD, testMultiplication) {
@@ -34,11 +35,17 @@ TEST(TDD, testCurrency) { //p94, 통화개념을 표시하기 위하여 currency
 // }
 
 TEST(TDD, testSimpleAddition){
-  Money five = Money().dollar(5);
-  Money sum = (five).plus(five);
-  Bank bank = Bank();
-  Money reduced = bank.reduce(sum, "USD");
-  EXPECT_EQ(Money().dollar(10).getMoney(), reduced.getMoney());
+  // Money *five = new Money(5, "USD");
+  // Expression *result = &(*five).plus(*five);
+  // Money result = (five).plus(five);
+  // Bank bank = Bank();
+  // Money reduced = bank.reduce(sum, "USD");
+  Money five = Money(5, "USD");
+  Money add = five.plus(five);
+  Expression result = Expression(add.getMoney(), add.getCurrency());
+  Sum sum = Sum(result.getMoney());
+  EXPECT_EQ(five.getMoney(), sum.augend.getMoney());
+  EXPECT_EQ(five.getMoney(), sum.addend.getMoney());
 }
 
 // TEST(TDD, testDiffentClassEquality) { 
