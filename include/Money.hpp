@@ -48,6 +48,16 @@ class Money
 			return Money(_amount * multiplier, _currency);
 		};
 		
+		Money franc(int amount)
+		{
+			return Money(amount, "CHF");
+		}
+
+		Money dollar(int amount)
+		{
+			return Money(amount, "USD");
+		}
+
 		std::string currency(){ 
 			// p95, 이제 두 currency()가 동일하므로 변수 선언과 currency() 구현을 둘 다 위로 올릴(push up)수 있게 됐다.
 			return _currency;

@@ -14,8 +14,8 @@ TEST(TDD, testMultiplication) {
 TEST(TDD, testEquality) {
   EXPECT_TRUE(Dollar(5, "USD").equals(Dollar(5, "USD")));
   EXPECT_FALSE(Dollar(5, "USD").equals(Dollar(6, "USD")));
-  EXPECT_TRUE(Franc(5, "CHF").equals(Franc(5, "CHF"))); 
-  EXPECT_FALSE(Franc(5, "CHF").equals(Franc(6, "CHF")));
+  // EXPECT_TRUE(Franc(5, "CHF").equals(Franc(5, "CHF"))); 
+  // EXPECT_FALSE(Franc(5, "CHF").equals(Franc(6, "CHF")));
   EXPECT_FALSE(Franc(5, "CHF").equals(Money(Dollar(5, "USD"))));
 }
 

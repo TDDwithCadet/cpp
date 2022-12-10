@@ -8,7 +8,7 @@ hashCode()
 Equal null
 Equal object
 // 5CHF X 2 = 10CHF
-Dollar/Franc 중복
+// Dollar/Franc 중복(p111 삭제, testEquality에서 중복된 영역 삭제함)
 // 공용 equals
 // 공용 times
 // Franc와 Dollar 비교하기(p83 추가)
