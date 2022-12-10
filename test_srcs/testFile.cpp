@@ -86,6 +86,15 @@ TEST(TDD, testReduceMoneyDifferentCurrency){
 //   EXPECT_EQ()
 // }
 
+TEST(TDD, testMixedAddition){
+  Money fiveBucks = Money().dollar(5);
+  Money tenFrancs = Money().franc(10);
+  Bank bank = Bank();
+  bank.addRate("CHF", "USD", 2);
+  Sum sum = Sum(fiveBucks, tenFrancs);
+  Money result = sum.reduce(bank, "USD");
+  EXPECT_EQ(Money().dollar(10).getMoney(), result.getMoney());
+}
 
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);

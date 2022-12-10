@@ -1,7 +1,9 @@
 $5 + 10 CHF = $10(환율이 2:1일 경우)
-$5 + $5 = $10
+// $5 + $5 = $10 , p135삭제
 $5 + $5에서 Money반환하기
-Bank.reduce(Money)
+// Bank.reduce(Money) // p127삭제
+// Money에 대한 통과 변환을 수행하는 Reduce //p129 추가, p135삭제
+// Reduce(Bank, String), p135삭제
 
 // $5 X 2 = $10
 // amount를 private으로 만들기

@@ -24,9 +24,13 @@
       };
 
       Money reduce(Bank bank, std::string to){
-        int amount = _augend.getMoney() + _addend.getMoney();
+        int amount = _augend.reduce(bank, to).getMoney() + _addend.reduce(bank, to).getMoney();
         return Money(amount, to);
       };
+
+      Money plus(Money addend){
+        return Money();
+      }
   };
 
 #endif
