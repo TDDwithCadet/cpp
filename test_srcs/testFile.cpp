@@ -34,23 +34,41 @@ TEST(TDD, testCurrency) { //p94, 통화개념을 표시하기 위하여 currency
 //   EXPECT_EQ(Money().dollar(10).getMoney(), sum.getMoney());
 // }
 
-TEST(TDD, testSimpleAddition){
-  // Money *five = new Money(5, "USD");
-  // Expression *result = &(*five).plus(*five);
-  // Money result = (five).plus(five);
-  // Bank bank = Bank();
-  // Money reduced = bank.reduce(sum, "USD");
-  Money five = Money(5, "USD");
-  Money add = five.plus(five);
-  Expression result = Expression(add.getMoney(), add.getCurrency());
-  Sum sum = Sum(result.getMoney());
-  EXPECT_EQ(five.getMoney(), sum.augend.getMoney());
-  EXPECT_EQ(five.getMoney(), sum.addend.getMoney());
-}
-
 // TEST(TDD, testDiffentClassEquality) { 
 //   EXPECT_EQ(Money(10, "CHF").currency(), Franc(10, "CHF").currency()); 
 // }(p112 삭제)
+
+TEST(TDD, testSimpleAddition){
+  Money five = Money(5, "USD");
+  Money add = five.plus(five);
+  Expression result = Expression(add.getMoney(), add.getCurrency());
+  Sum sum = Sum(five, five);
+  Bank bank = Bank();
+  Money reduced = bank.reduce(sum, "USD");
+  EXPECT_EQ(Money().dollar(10).getMoney(), reduced.getMoney());
+}
+
+TEST(TDD, testPlusReturnSum){
+  Money five = Money(5, "USD");
+  Money add = five.plus(five);
+  Expression result = Expression(add.getMoney(), add.getCurrency());
+  Sum sum = Sum(five, add);
+  EXPECT_EQ(five.getMoney(), sum._augend.getMoney());
+  EXPECT_EQ(add.getMoney(), sum._addend.getMoney());
+}
+
+TEST(TDD, testReduceSum){
+  Sum sum = Sum(Money().dollar(3), Money().dollar(4));
+  Bank bank = Bank();
+  Money result = bank.reduce(sum, "USD");
+  EXPECT_EQ(Money().dollar(7).getMoney(), result.getMoney());
+}
+
+TEST(TDD, testReduceMoney){
+  Bank bank = Bank();
+  Money result = bank.reduce(Sum(Money(1, "USD"), Money(0, "USD")), "USD");
+  EXPECT_EQ(Money().dollar(1).getMoney(), result.getMoney());
+}
 
 
 int main(int argc, char **argv) {

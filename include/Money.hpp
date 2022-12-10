@@ -71,6 +71,9 @@ class Money
 				return (Money(_amount + addend.getMoney(), _currency));
 		}
 		
+		Money reduce(std::string to){
+			return Money(); // 좀 다름
+		};
 
 	protected:
 		int					_amount;
