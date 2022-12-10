@@ -3,13 +3,17 @@
 #include "Dollar.hpp"
 #include "Franc.hpp"
 #include "Money.hpp"
+#include "Expression.hpp"
+#include "Bank.hpp"
 
-//test_case_name, test_name
+// test_case_name, test_name
 TEST(TDD, testMultiplication) {
   Money five = Dollar(5, "USD");
   EXPECT_EQ(Dollar(10, "USD").getMoney(), five.times(2).getMoney());
   EXPECT_EQ(Dollar(15, "USD").getMoney(), five.times(3).getMoney());
 }
+
+// testFrancMultiplication(p112 삭제)
 
 TEST(TDD, testEquality) {
   EXPECT_TRUE(Dollar(5, "USD").equals(Dollar(5, "USD")));
@@ -24,9 +28,22 @@ TEST(TDD, testCurrency) { //p94, 통화개념을 표시하기 위하여 currency
   EXPECT_EQ("CHF", Franc(1, "CHF").currency());  
 }
 
-TEST(TDD, testDiffentClassEquality) { 
-  EXPECT_EQ(Money(10, "CHF").currency(), Franc(10, "CHF").currency()); 
+// TEST(TDD, testSimpleAddition){
+//   Money sum = Money().dollar(5).plus(Money().dollar(5));
+//   EXPECT_EQ(Money().dollar(10).getMoney(), sum.getMoney());
+// }
+
+TEST(TDD, testSimpleAddition){
+  Money five = Money().dollar(5);
+  Money sum = (five).plus(five);
+  Bank bank = Bank();
+  Money reduced = bank.reduce(sum, "USD");
+  EXPECT_EQ(Money().dollar(10).getMoney(), reduced.getMoney());
 }
+
+// TEST(TDD, testDiffentClassEquality) { 
+//   EXPECT_EQ(Money(10, "CHF").currency(), Franc(10, "CHF").currency()); 
+// }(p112 삭제)
 
 
 int main(int argc, char **argv) {

@@ -6,7 +6,7 @@
 # include <stdio.h>
 // # include "Dollar.hpp"
 // # include "Franc.hpp"
-
+// #include "Expression.hpp"
 
 class Money
 {
@@ -63,7 +63,13 @@ class Money
 			return _currency;
 		};
 
+		// Money plus(Money addend){ //p114 추가
+		// 	return Money(_amount + addend.getMoney(), _currency);
+		// };
 
+		Money plus(Money addend){
+				return (Money(_amount + addend.getMoney(), _currency));
+		}
 		
 
 	protected:
@@ -74,21 +80,5 @@ class Money
 	private:
 		
 };
-
-
-
-// static Money franc(int amount) {
-// 	return Franc(amount, "CHF");
-// }
-
-// static Money dollar(int amount) {
-// 	return Dollar(amount, "USD");
-// }
-
-
-
-
-
-
 
 #endif /* *********************************************************** MONEY_H */
