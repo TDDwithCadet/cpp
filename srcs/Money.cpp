@@ -63,4 +63,10 @@ Money Money::reduce(Bank bank, std::string to){
   int rate = bank.rate(_currency, to);
   std::cout << "rate??????" << rate << "\n";
   return Money(_amount / rate, to);
-};
+}
+
+Money &Money::operator+( Money const & rhs )
+{
+  this->_amount = this->_amount + rhs._amount;
+  return *this;
+}

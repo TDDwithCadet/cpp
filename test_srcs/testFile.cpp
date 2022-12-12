@@ -96,6 +96,26 @@ TEST(TDD, testMixedAddition){
   EXPECT_EQ(Money().dollar(10).getMoney(), result.getMoney());
 }
 
+TEST(TDD, testSumPlusMoney){
+  Money fiveBucks = Money().dollar(5);
+  Money tenFrancs = Money().franc(10);
+  Bank bank = Bank();
+  bank.addRate("CHF", "USD", 2);
+  Sum sum = Sum(fiveBucks, tenFrancs).plus(fiveBucks);
+  Money result = sum.reduce(bank, "USD");
+  EXPECT_EQ(Money().dollar(15).getMoney(), result.getMoney());
+}
+
+TEST(TDD, testSumTimes){
+  Money fiveBucks = Money().dollar(5);
+  Money tenFrancs = Money().franc(10);
+  Bank bank = Bank();
+  bank.addRate("CHF", "USD", 2);
+  Sum sum = Sum(fiveBucks, tenFrancs).times(2);
+  Money result = sum.reduce(bank, "USD");
+  EXPECT_EQ(Money().dollar(20).getMoney(), result.getMoney());
+}
+
 int main(int argc, char **argv) {
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();

@@ -24,6 +24,7 @@ class Money
 		std::string currency();
 		Money plus(Money addend);
 		Money reduce(Bank bank, std::string to);
+		Money &		operator+( Money const & rhs );
 
 	protected:
 		int					_amount;
